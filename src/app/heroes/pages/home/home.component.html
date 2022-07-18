@@ -1,4 +1,12 @@
-<h1>HeroesApp</h1>
-<hr>
-
-<router-outlet></router-outlet>
+<mat-drawer-container fullscreen>
+    <!-- Se agrega referencia local para poder ejecutar eventos o metodos del componente de mat-sidenav -->
+    <mat-sidenav #sidenav>
+        <h1>Sidnav</h1>
+    </mat-sidenav>
+    <mat-toolbar>
+        <button mat-icon-button
+                (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+</mat-drawer-container>
