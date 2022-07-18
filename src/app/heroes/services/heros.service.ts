@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Heroe } from '../interfaces/heroes.interface';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HerosService {
+
+  private baseUrl: string = environment.baserUrl;
 
   constructor(private http: HttpClient) { }
 
