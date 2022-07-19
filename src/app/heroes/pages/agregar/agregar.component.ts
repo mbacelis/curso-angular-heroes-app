@@ -80,21 +80,30 @@ export class AgregarComponent implements OnInit {
   }
 
   borrarHeroe() {
-    this.dialog.open(ConfirmarComponent, {
-      width: '550px'
+    const dialog = this.dialog.open(ConfirmarComponent, {
+      width: '550px',
+      data: this.heroe
     });
 
-    // if (this.heroe.id) {
-    //   this.heroesService.borrarHeroe(this.heroe.id!)
-    //     .subscribe(resp => {
-    //       this.router.navigate(['/heroes']);
-    //     })
-    // }
+    dialog.afterClosed()
+      .subscribe(resp => { 
+        if (!resp) return;
+        
+      if (this.heroe.id) {
+            this.heroesService.borrarHeroe(this.heroe.id!)
+              .subscribe(resp => {
+                this.mostrarSnakbar("Registro borrado correctamente")
+                this.router.navigate(['/heroes']);
+              })
+          }
+      });
+
+    
   }
 
   mostrarSnakbar(mensaje: string): void {
     this.snackBar.open(mensaje, 'ok!', {
-      duration: 2500
+      duration: 2500 
     });
   }
 }
