@@ -28,5 +28,4 @@ export class LoginComponent {
     this.authService.logout();
     this.router.navigate(['./heroes']);
   }
-
 }
