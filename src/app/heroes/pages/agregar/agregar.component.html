@@ -2,16 +2,22 @@
 
 <div fxLayout="row" fxLayoutGap="40px">
     <div fxFlex="50" fxLayout="column">
-        <div fxLayout="row" fxLayoutGap="20px"><!-- fxLayoutGap para establecer un margen -->
+        <div fxLayout="row"
+             fxLayout.xs="column"
+             fxLayout.sm="column"    
+             fxLayoutGap="20px"
+             ><!-- fxLayoutGap para establecer un margen -->
             <mat-form-field fxFlex="100">
                 <mat-label>Super Héroe</mat-label>
                 <input type="text"
+                    [(ngModel)]="heroe.superhero"
                     matInput
                     required>
             </mat-form-field>
             <mat-form-field fxFlex="100">
                 <mat-label>Alter Ego</mat-label>
                 <input type="text"
+                    [(ngModel)]="heroe.alter_ego"
                     matInput
                     required>
             </mat-form-field>
@@ -19,18 +25,21 @@
         <mat-form-field fxFlex="100">
             <mat-label>Primera Aparición</mat-label>
             <input type="text"
+                   [(ngModel)]="heroe.first_appearance"
                    matInput
                    required>
         </mat-form-field>
         <mat-form-field fxFlex="100">
             <mat-label>Personajes</mat-label>
             <input type="text"
+                   [(ngModel)]="heroe.characters"
                    matInput
                    required>
         </mat-form-field>
         <mat-form-field fxFlex="100">
             <mat-label>Creador</mat-label>
-            <mat-select>
+            <mat-select [(ngModel)]="heroe.publisher"
+                        required>
                 <mat-option *ngFor="let publisher of publishers"
                             [value]="publisher.id">
                     {{ publisher.desc }}
@@ -40,11 +49,13 @@
         <mat-form-field fxFlex="100">
             <mat-label>Foto Url</mat-label>
             <input type="url"
+                   [(ngModel)]="heroe.alt_img"
                    matInput
                    required>
         </mat-form-field>
         <br>
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary"
+                (click)="guardar()">
             <mat-icon>edit</mat-icon>
             Guardar
         </button>
