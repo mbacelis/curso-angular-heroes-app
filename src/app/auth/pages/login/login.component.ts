@@ -24,4 +24,9 @@ export class LoginComponent {
       });
   }
 
+  ingresarSinLogin() {
+    this.authService.logout();
+    this.router.navigate(['./heroes']);
+  }
+
 }
